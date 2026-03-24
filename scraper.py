@@ -1,0 +1,436 @@
+"""
+Çok Kaynaklı RSS Üretici
+Kullanım: python scraper.py
+Çıktı: feeds/ klasöründe her site için ayrı .xml dosyası
+"""
+
+import requests
+from bs4 import BeautifulSoup
+from feedgen.feed import FeedGenerator
+from datetime import datetime, timezone
+import re
+import os
+import time
+
+OUTPUT_DIR = "feeds"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept-Language": "tr-TR,tr;q=0.9",
+}
+
+
+# ── Yardımcı fonksiyonlar ─────────────────────────────────────────────────────
+
+def get_page(url, timeout=20):
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=timeout)
+        r.encoding = "utf-8"
+        return BeautifulSoup(r.text, "html.parser")
+    except Exception as e:
+        print(f"  ⚠️  Sayfa çekilemedi: {url} → {e}")
+        return None
+
+
+def parse_date(text):
+    """Çeşitli Türkçe tarih formatlarını datetime'a çevirir."""
+    if not text:
+        return datetime.now(timezone.utc)
+    text = text.strip()
+    for fmt in ("%d.%m.%Y", "%Y-%m-%d", "%d/%m/%Y", "%d %B %Y"):
+        try:
+            return datetime.strptime(text, fmt).replace(tzinfo=timezone.utc)
+        except ValueError:
+            pass
+    m = re.search(r"(\d{2})[./](\d{2})[./](\d{4})", text)
+    if m:
+        try:
+            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)), tzinfo=timezone.utc)
+        except ValueError:
+            pass
+    return datetime.now(timezone.utc)
+
+
+def make_feed(title, url, desc, lang="tr"):
+    fg = FeedGenerator()
+    fg.id(url)
+    fg.title(title)
+    fg.link(href=url, rel="alternate")
+    fg.description(desc)
+    fg.language(lang)
+    fg.lastBuildDate(datetime.now(timezone.utc))
+    return fg
+
+
+def add_entry(fg, title, url, date):
+    if not title or not url:
+        return
+    fe = fg.add_entry()
+    fe.id(url)
+    fe.title(title.strip())
+    fe.link(href=url)
+    fe.published(date)
+    fe.updated(date)
+
+
+def save_feed(fg, filename):
+    path = os.path.join(OUTPUT_DIR, filename)
+    fg.rss_file(path, pretty=True)
+    print(f"  ✅ Kaydedildi: {path}")
+
+
+# ── Scraper fonksiyonları ─────────────────────────────────────────────────────
+
+def scrape_bddk_liste(list_id, feed_title, filename):
+    """BDDK /Duyuru/Liste/* ve /Mevzuat/Liste/* sayfaları için genel scraper."""
+    base = "https://www.bddk.org.tr"
+    url  = f"{base}/{'Duyuru' if int(list_id) < 50 else 'Mevzuat'}/Liste/{list_id}"
+    # Hem Duyuru hem Mevzuat için doğru path'i belirle
+    if list_id in [39, 40, 48, 41, 42, 43, 197]:
+        url = f"{base}/Duyuru/Liste/{list_id}"
+    else:
+        url = f"{base}/Mevzuat/Liste/{list_id}"
+
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed(feed_title, url, f"BDDK – {feed_title}")
+    count = 0
+    for li in soup.select("ul li"):
+        a = li.find("a", href=re.compile(r"/(Duyuru|Mevzuat)/"))
+        if not a:
+            continue
+        href = a.get("href", "")
+        if not href:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        title    = a.get_text(strip=True)
+        raw      = li.get_text(" ", strip=True)
+        m        = re.search(r"\d{2}\.\d{2}\.\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, filename)
+
+
+def scrape_bddk_dergi():
+    """BDDK Bankacılık ve Finansal Piyasalar Dergisi."""
+    url  = "https://www.bddk.org.tr/KurumHakkinda/Detay/26"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("BDDK – Bankacılık ve Finansal Piyasalar Dergisi", url,
+                   "BDDK Dergisi yeni sayıları")
+    count = 0
+    for a in soup.find_all("a", href=True):
+        href  = a["href"]
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        if "dergi" in href.lower() or "dergi" in title.lower() or re.search(r"\d{4}", title):
+            full_url = base + href if href.startswith("/") else href
+            add_entry(fg, title, full_url, datetime.now(timezone.utc))
+            count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "bddk_dergi.xml")
+
+
+def scrape_kvkk():
+    """KVKK Duyurular."""
+    url  = "https://www.kvkk.gov.tr/Icerik/2015/Duyurular"
+    base = "https://www.kvkk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("KVKK – Duyurular", url, "Kişisel Verileri Koruma Kurumu Duyuruları")
+    count = 0
+    # KVKK liste öğeleri genellikle <a> içinde tarih + başlık barındırır
+    for a in soup.select("a[href*='/Icerik/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 10:
+            continue
+        href     = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        # Üst elemanda tarih aramayı dene
+        parent_text = a.find_parent().get_text(" ", strip=True) if a.find_parent() else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", parent_text)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "kvkk_duyurular.xml")
+
+
+def scrape_rekabet():
+    """Rekabet Kurumu Güncel haberler."""
+    url  = "https://www.rekabet.gov.tr/tr/Gunceller/1"
+    base = "https://www.rekabet.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("Rekabet Kurumu – Güncel", url, "Rekabet Kurumu Güncel Haberler")
+    count = 0
+    for a in soup.select("a[href*='/Guncel/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href     = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "rekabet_guncel.xml")
+
+
+def scrape_isbank(path, feed_title, filename):
+    """İş Bankası haber/duyuru sayfaları."""
+    base = "https://www.isbank.com.tr"
+    url  = base + path
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed(f"İş Bankası – {feed_title}", url, f"İş Bankası {feed_title}")
+    count = 0
+    # İş Bankası haberleri article veya card benzeri elemanlarda
+    for a in soup.select("a[href]"):
+        href  = a["href"]
+        title = a.get_text(strip=True)
+        if not title or len(title) < 10:
+            continue
+        if path.split("/")[-1] not in href and "haber" not in href and "aciklama" not in href:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, filename)
+
+
+def scrape_tbb(path, feed_title, filename):
+    """TBB sayfaları — bağlantı hatası durumunda uyarı verir."""
+    base = "https://www.tbb.org.tr"
+    url  = base + path
+    soup = get_page(url)
+    if not soup:
+        print(f"  ⚠️  TBB sayfası erişilemedi (bot koruması olabilir): {url}")
+        return
+
+    fg = make_feed(f"TBB – {feed_title}", url, f"Türkiye Bankacılar Birliği – {feed_title}")
+    count = 0
+    for a in soup.select("a[href]"):
+        title = a.get_text(strip=True)
+        href  = a["href"]
+        if not title or len(title) < 10:
+            continue
+        if path.split("/")[-1] not in href and "duyuru" not in href and "yayin" not in href and "dergi" not in href:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, filename)
+
+
+def scrape_kgk_duyurular():
+    """KGK Duyurular — JS gerektiriyorsa uyarı verir."""
+    url  = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        print("  ⚠️  KGK erişilemedi.")
+        return
+
+    fg = make_feed("KGK – Duyurular", url, "Kamu Gözetimi Kurumu Duyuruları")
+    count = 0
+    for a in soup.select("a[href]"):
+        title = a.get_text(strip=True)
+        href  = a["href"]
+        if not title or len(title) < 10:
+            continue
+        if "/Assignment" not in href and "/DynamicContent" not in href:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "kgk_duyurular.xml")
+
+
+def scrape_kgk_yayinlar():
+    """KGK Son Yayımlanlar."""
+    url  = "https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        print("  ⚠️  KGK Son Yayımlanlar erişilemedi.")
+        return
+
+    fg = make_feed("KGK – Son Yayımlanlar", url, "Kamu Gözetimi Kurumu Son Yayımlananlar")
+    count = 0
+    for a in soup.select("a[href]"):
+        title = a.get_text(strip=True)
+        href  = a["href"]
+        if not title or len(title) < 10:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "kgk_son_yayinlar.xml")
+
+
+def scrape_kgk_tezler():
+    """KGK Uzmanlık Tezleri."""
+    url  = "https://kgk.gov.tr/DynamicContentDetail/10263/Uzmanl%C4%B1k-Tezleri"
+    base = "https://kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        print("  ⚠️  KGK Uzmanlık Tezleri erişilemedi.")
+        return
+
+    fg = make_feed("KGK – Uzmanlık Tezleri", url, "KGK Uzmanlık Tezleri")
+    count = 0
+    for a in soup.select("a[href]"):
+        title = a.get_text(strip=True)
+        href  = a["href"]
+        if not title or len(title) < 10:
+            continue
+        full_url = base + href if href.startswith("/") else href
+        add_entry(fg, title, full_url, datetime.now(timezone.utc))
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "kgk_tezler.xml")
+
+
+def scrape_dkbp():
+    """DKBP İdari Yaptırım — erişim engellenebilir."""
+    url = "https://dkbp.kgk.gov.tr/Denkur/IdariYaptirimGoruntule.aspx?FirmaID=HGOQNproUDbN4S6VC%2bpSTg%3d%3d"
+    soup = get_page(url)
+    if not soup:
+        print("  ⚠️  DKBP erişilemedi (robots.txt veya IP engeli).")
+        return
+
+    fg = make_feed("DKBP – İdari Yaptırım", url, "DKBP İdari Yaptırım Listesi")
+    count = 0
+    for tr in soup.select("table tr"):
+        cells = tr.find_all(["td", "th"])
+        if len(cells) < 2:
+            continue
+        title = " | ".join(c.get_text(strip=True) for c in cells if c.get_text(strip=True))
+        if not title or len(title) < 5:
+            continue
+        add_entry(fg, title, url, datetime.now(timezone.utc))
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "dkbp_yaptirim.xml")
+
+
+def scrape_tcmb():
+    """TCMB Basın Duyuruları."""
+    url  = "https://tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin"
+    base = "https://tcmb.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        print("  ⚠️  TCMB erişilemedi.")
+        return
+
+    fg = make_feed("TCMB – Basın Duyuruları", url, "Türkiye Cumhuriyet Merkez Bankası Basın Duyuruları")
+    count = 0
+    for a in soup.select("a[href]"):
+        title = a.get_text(strip=True)
+        href  = a["href"]
+        if not title or len(title) < 10:
+            continue
+        if "basin" not in href.lower() and "duyuru" not in href.lower() and "press" not in href.lower():
+            continue
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "tcmb_basin.xml")
+
+
+# ── Ana akış ─────────────────────────────────────────────────────────────────
+
+TASKS = [
+    ("BDDK – Basın Duyuruları",                  lambda: scrape_bddk_liste(39,  "Basın Duyuruları",                   "bddk_basin.xml")),
+    ("BDDK – Mevzuat Duyuruları",                lambda: scrape_bddk_liste(40,  "Mevzuat Duyuruları",                 "bddk_mevzuat.xml")),
+    ("BDDK – Resmi Gazete Kurul Kararları",       lambda: scrape_bddk_liste(55,  "Resmi Gazete Kurul Kararları",       "bddk_rg_kurul.xml")),
+    ("BDDK – Resmi Gazete Dışı Kurul Kararları",  lambda: scrape_bddk_liste(56,  "Resmi Gazete Dışı Kurul Kararları",  "bddk_rg_disi.xml")),
+    ("BDDK – Dergi",                             scrape_bddk_dergi),
+    ("KVKK – Duyurular",                         scrape_kvkk),
+    ("Rekabet Kurumu – Güncel",                  scrape_rekabet),
+    ("İş Bankası – Haberler",                    lambda: scrape_isbank("/bankamizi-taniyin/is-bankasindan-haberler",   "Haberler",             "isbank_haberler.xml")),
+    ("İş Bankası – Özel Durum Açıklamaları",     lambda: scrape_isbank("/bankamizi-taniyin/ozel-durum-aciklamalari", "Özel Durum Açıklamaları", "isbank_ozel_durum.xml")),
+    ("KGK – Duyurular",                          scrape_kgk_duyurular),
+    ("KGK – Son Yayımlanlar",                    scrape_kgk_yayinlar),
+    ("KGK – Uzmanlık Tezleri",                   scrape_kgk_tezler),
+    ("DKBP – İdari Yaptırım",                    scrape_dkbp),
+    ("TCMB – Basın Duyuruları",                  scrape_tcmb),
+    ("TBB – Bankacılar Dergisi",                 lambda: scrape_tbb("/bankacilik/arastirma-ve-yayinlar/bankacilar-dergisi", "Bankacılar Dergisi", "tbb_dergi.xml")),
+    ("TBB – Kitaplar",                           lambda: scrape_tbb("/bankacilik/arastirma-ve-yayinlar/kitaplar",           "Kitaplar",           "tbb_kitaplar.xml")),
+    ("TBB – Duyurular",                          lambda: scrape_tbb("/duyurular",                                           "Duyurular",          "tbb_duyurular.xml")),
+]
+
+
+def main():
+    print(f"🚀 {len(TASKS)} kaynak taranıyor...\n")
+    basarili = 0
+    for name, fn in TASKS:
+        print(f"⏳ {name}")
+        try:
+            fn()
+            basarili += 1
+        except Exception as e:
+            print(f"  ❌ Hata: {e}")
+        time.sleep(1)  # Sitelere aşırı yük bindirmemek için
+
+    print(f"\n✅ Tamamlandı: {basarili}/{len(TASKS)} kaynak işlendi.")
+    print(f"📁 Feed dosyaları: ./{OUTPUT_DIR}/")
+
+
+if __name__ == "__main__":
+    main()
