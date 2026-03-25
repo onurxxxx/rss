@@ -420,7 +420,7 @@ def scrape_bddk3():
 
 def scrape_bddk4():
     """BDDK 4."""
-    url = "https://www.bddk.org.tr/Mevzuat/Liste/40"
+    url = "https://www.bddk.org.tr/Duyuru/Liste/40"
     base = "https://www.bddk.org.tr"
     soup = get_page(url)
     if not soup:
@@ -447,7 +447,7 @@ def scrape_bddk4():
 
 def scrape_bddk5():
     """BDDK 5."""
-    url = "https://www.bddk.org.tr/Mevzuat/Liste/48"
+    url = "https://www.bddk.org.tr/Duyuru/Liste/48"
     base = "https://www.bddk.org.tr"
     soup = get_page(url)
     if not soup:
@@ -474,7 +474,7 @@ def scrape_bddk5():
 
 def scrape_bddk6():
     """BDDK 6."""
-    url = "https://www.bddk.org.tr/Mevzuat/Liste/197"
+    url = "https://www.bddk.org.tr/Duyuru/Liste/197"
     base = "https://www.bddk.org.tr"
     soup = get_page(url)
     if not soup:
