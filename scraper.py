@@ -337,80 +337,80 @@ def scrape_tcmb():
 
 
 def scrape_bddk1():
-"""BDDK 1."""
-url = "https://www.bddk.org.tr/Mevzuat/Liste/56"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 1."""
+    url = "https://www.bddk.org.tr/Mevzuat/Liste/56"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK1", url, "BDDK1")
-count = 0
-for a in soup.select("a[href*='/DokumanGetir/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK1", url, "BDDK1")
+    count = 0
+    for a in soup.select("a[href*='/DokumanGetir/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk1.xml")
+    print(f" 📌 {count} öğe bulundu.")
+    save_feed(fg, "bddk1.xml")
 
 def scrape_bddk2():
-"""BDDK 2."""
-url = "https://www.bddk.org.tr/Mevzuat/Liste/55"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 2."""
+    url = "https://www.bddk.org.tr/Mevzuat/Liste/55"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK2", url, "BDDK2")
-count = 0
-for a in soup.select("a[href*='/DokumanGetir/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK2", url, "BDDK2")
+    count = 0
+    for a in soup.select("a[href*='/DokumanGetir/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk2.xml")
+    print(f" 📌 {count} öğe bulundu.")
+    save_feed(fg, "bddk2.xml")
 
 
 def scrape_bddk3():
-"""BDDK 3."""
-url = "https://www.bddk.org.tr/Duyuru/Liste/39"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 3."""
+    url = "https://www.bddk.org.tr/Duyuru/Liste/39"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK3", url, "BDDK3")
-count = 0
-for a in soup.select("a[href*='/Detay/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK3", url, "BDDK3")
+    count = 0
+    for a in soup.select("a[href*='/Detay/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
 print(f" 📌 {count} öğe bulundu.")
 save_feed(fg, "bddk3.xml")
@@ -419,81 +419,81 @@ save_feed(fg, "bddk3.xml")
 
 
 def scrape_bddk4():
-"""BDDK 4."""
-url = "https://www.bddk.org.tr/Mevzuat/Liste/40"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 4."""
+    url = "https://www.bddk.org.tr/Mevzuat/Liste/40"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK4", url, "BDDK4")
-count = 0
-for a in soup.select("a[href*='/Detay/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK4", url, "BDDK4")
+    count = 0
+    for a in soup.select("a[href*='/Detay/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
 print(f" 📌 {count} öğe bulundu.")
 save_feed(fg, "bddk4.xml")
 
 
 def scrape_bddk5():
-"""BDDK 5."""
-url = "https://www.bddk.org.tr/Mevzuat/Liste/48"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 5."""
+    url = "https://www.bddk.org.tr/Mevzuat/Liste/48"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK5", url, "BDDK5")
-count = 0
-for a in soup.select("a[href*='/Detay/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK5", url, "BDDK5")
+    count = 0
+    for a in soup.select("a[href*='/Detay/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
 print(f" 📌 {count} öğe bulundu.")
 save_feed(fg, "bddk5.xml")
 
 
 def scrape_bddk6():
-"""BDDK 6."""
-url = "https://www.bddk.org.tr/Mevzuat/Liste/197"
-base = "https://www.bddk.org.tr"
-soup = get_page(url)
-if not soup:
-return
+    """BDDK 6."""
+    url = "https://www.bddk.org.tr/Mevzuat/Liste/197"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
 
-fg = make_feed("BDDK6", url, "BDDK6")
-count = 0
-for a in soup.select("a[href*='/Detay/']"):
-title = a.get_text(strip=True)
-if not title or len(title) < 5:
-continue
-href = a["href"]
-full_url = base + href if href.startswith("/") else href
-parent = a.find_parent()
-raw = parent.get_text(" ", strip=True) if parent else ""
-m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-date = parse_date(m.group() if m else None)
-add_entry(fg, title, full_url, date)
-count += 1
+    fg = make_feed("BDDK6", url, "BDDK6")
+    count = 0
+    for a in soup.select("a[href*='/Detay/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
 
 print(f" 📌 {count} öğe bulundu.")
 save_feed(fg, "bddk6.xml")
