@@ -399,7 +399,7 @@ def scrape_bddk3():
 
     fg = make_feed("BDDK3", url, "BDDK3")
     count = 0
-    for a in soup.select("a[href*='/Detay/']"):
+    for a in soup.select("a[href*='/Duyuru/Detay/']"):
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
@@ -428,7 +428,7 @@ def scrape_bddk4():
 
     fg = make_feed("BDDK4", url, "BDDK4")
     count = 0
-    for a in soup.select("a[href*='/Detay/']"):
+    for a in soup.select("a[href*='/Duyuru/Detay/']"):
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
@@ -455,7 +455,7 @@ def scrape_bddk5():
 
     fg = make_feed("BDDK5", url, "BDDK5")
     count = 0
-    for a in soup.select("a[href*='/Detay/']"):
+    for a in soup.select("a[href*='/Duyuru/Detay/']"):
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
@@ -482,7 +482,7 @@ def scrape_bddk6():
 
     fg = make_feed("BDDK6", url, "BDDK6")
     count = 0
-    for a in soup.select("a[href*='/Detay/']"):
+    for a in soup.select("a[href*='/Duyuru/Detay/']"):
         title = a.get_text(strip=True)
         if not title or len(title) < 5:
             continue
