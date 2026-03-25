@@ -2,179 +2,485 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
     <title>BDDK6</title>
-    <link>https://www.bddk.org.tr/Mevzuat/Liste/197</link>
+    <link>https://www.bddk.org.tr/Duyuru/Liste/197</link>
     <description>BDDK6</description>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>tr</language>
-    <lastBuildDate>Wed, 25 Mar 2026 06:52:17 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2026 07:09:41 +0000</lastBuildDate>
     <item>
-      <title>İnsan Kaynakları</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/195</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/195</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>03.05.2018BDDK Başkanı Mehmet Ali Akben CIBAFI Global Forum 2018 açılışında konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2163</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2163</guid>
+      <pubDate>Thu, 03 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Faaliyet Raporları</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/23</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/23</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>08.05.2018BDDK Başkanı Mehmet Ali Akben Türkiye Bankalar Birliği 61. Genel Kurul Toplantısı'nın açılışında konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2164</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2164</guid>
+      <pubDate>Tue, 08 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Organizasyon Şeması</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/22</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/22</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>23.02.2023Deprem Sonrası Devreye Alınan Tedbirler</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2239</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2239</guid>
+      <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Başkan ve Kurul Üyeleri</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/21</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/21</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>09.05.2018Türkiye Katılım Bankaları Birliği'nin 17. Genel Kurul Toplantısı'nda BDDK Başkanı Mehmet Ali Akben konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2165</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2165</guid>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>VERİ YAYIMLAMA TAKVİMİ</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/71</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/71</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>09.05.2018BDDK İkinci Başkanı Yakup Asarkaya Finansal Kurumlar Birliği'nin 6. Olağan Genel Kurulu'nda konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2166</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2166</guid>
+      <pubDate>Wed, 09 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Bağımsız Denetim Raporları</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/75</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/75</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>10.05.2018Finansal Sektör Komisyonu Olağan Toplantısı BDDK'nın ev sahipliğinde gerçekleşti.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2167</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2167</guid>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Varlık Yönetim</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/166</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/166</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>11.05.2018BDDK Başkanı Mehmet Ali Akben Türk Bankacılık Sektöründe Suç Gelirlerinin Aklanması ve Terörün Finansmanı ile Mücadele Çalıştayı'na katıldı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2168</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2168</guid>
+      <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Finansman Şirketleri</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/165</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/165</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>06.06.2018BDDK Başkanı Mehmet Ali Akben UMREK'in, Uluslararası Maden Rezervleri Raporlama Standartları Komisyonu (CRIRSCO) üyeliği tanıtım toplantısında konuştu.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2169</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2169</guid>
+      <pubDate>Wed, 06 Jun 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Finansal Kiralama</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/164</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/164</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>17.07.2018Hazine ve Maliye Bakanı Berat Albayrak Bankacılık Düzenleme ve Denetleme Kurumu'nu ziyaret etti.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2170</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2170</guid>
+      <pubDate>Tue, 17 Jul 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Faktoring</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/163</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/163</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>10.08.2018BDDK İkinci Başkanı Yakup Asarkaya Uluslararası Faktoring Konferansı'nda konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2171</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2171</guid>
+      <pubDate>Fri, 10 Aug 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Üçer Aylık Temel Göstergeler</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/162</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/162</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>14.11.2018BDDK İkinci Başkanı Yakup Asarkaya Alternatif Bank yeni Genel Müdürlük binasının açılışına katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2172</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2172</guid>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Kredi Kartı Bilgileri Uygulaması</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/161</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/161</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>21.11.2018Finansal Sektör Komisyonu Olağan Toplantısı BDDK'nın ev sahipliğinde gerçekleştirildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2173</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2173</guid>
+      <pubDate>Wed, 21 Nov 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>FinTürk - İllere Göre</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/160</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/160</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>27.11.2018BDDK 2019 Yılı Bütçe Teklifi TBMM Plan ve Bütçe Komisyonu'nda kabul edildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2174</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2174</guid>
+      <pubDate>Tue, 27 Nov 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Aylık Bülten</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/159</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/159</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>12.12.2018Sayıştay Başkanı Seyit Ahmet Baş Bankacılık Düzenleme ve Denetleme Kurumu'nu ziyaret etti.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2175</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2175</guid>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Haftalık Bülten</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/158</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/158</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>12.12.2018BDDK Başkanı Mehmet Ali Akben TSPB 20.Olağanüstü Genel Kurul toplantısına katıldı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2176</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2176</guid>
+      <pubDate>Wed, 12 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Günlük Bülten</title>
-      <link>https://www.bddk.org.tr/Veri/Detay/157</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/Veri/Detay/157</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>17.12.2018BDDK Başkanı Mehmet Ali Akben 2. İstanbul Ekonomi Zirvesi'ne katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2177</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2177</guid>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Kurumsal Kimlik</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/198</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/198</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>19.12.2018BDDK İkinci Başkanı Dr.Yakup Asarkaya T.C. Yeni Yüzyıl Üniversitesi'nde konuşma yaptı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2178</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2178</guid>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Etik Komisyonu</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/24</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/24</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>25.12.2018BDDK Başkanı Mehmet Ali Akben Türkiye’nin 500 Büyük Hizmet İhracatçısı Ödül Töreni'ne katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2179</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2179</guid>
+      <pubDate>Tue, 25 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Sürdürülebilir Bankacılık</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/35</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/35</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>26.12.2018BDDK Başkanı Mehmet Ali Akben Yeni Nesil Girişimcilik Zirvesi 2018'e katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2180</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2180</guid>
+      <pubDate>Wed, 26 Dec 2018 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>İnsan Kaynakları</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/195</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/195</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>11.01.2019Bankacılık Düzenleme ve Denetleme Kurulu Üyeleri Göreve Başladı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2181</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2181</guid>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>BDDK Bankacılık ve Finansal Piyasalar Dergisi</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/26</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/26</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>11.01.2019BDDK Başkanı Mehmet Ali Akben Kobi Değer Kredisi Tanıtım Toplantısı'na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2182</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2182</guid>
+      <pubDate>Fri, 11 Jan 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Uluslararası İlişkiler</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/25</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/25</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>22.02.2019Gayrimenkul Değerleme Şirketleri Toplantısı BDDK'nın ev sahipliğinde gerçekleştirildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2183</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2183</guid>
+      <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Stratejik Planlar</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/37</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/37</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>26.02.2019BDDK İkinci Başkanı Yakup Asarkaya 2.Türkiye Enerji ve Doğal Kaynaklar Zirvesi'ne katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2184</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2184</guid>
+      <pubDate>Tue, 26 Feb 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Faaliyet Raporları</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/23</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/23</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>08.03.2019BDDK İkinci Başkanı Yakup Asarkaya İstanbul Finans Merkezi Konferansı'’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2185</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2185</guid>
+      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Organizasyon Şeması</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/22</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/22</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>25.03.2019BDDK İkinci Başkanı Yakup Asarkaya Küresel Para Haftası Gong Töreni'nde konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2186</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2186</guid>
+      <pubDate>Mon, 25 Mar 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Başkan ve Kurul Üyeleri</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/21</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/21</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>29.03.2019Ulusal Maden Kaynak ve Rezerv Raporlama Komisyonu Toplantısı BDDK'nın ev sahipliğinde gerçekleştirildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2187</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2187</guid>
+      <pubDate>Fri, 29 Mar 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Misyon ve Vizyon</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/20</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/20</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>06.05.2019Finansal Sektör Komisyonu Olağan Toplantısı BDDK’nın ev sahipliğinde gerçekleştirildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2188</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2188</guid>
+      <pubDate>Mon, 06 May 2019 00:00:00 +0000</pubDate>
     </item>
     <item>
-      <title>Tarihçe</title>
-      <link>https://www.bddk.org.tr/KurumHakkinda/Detay/19</link>
-      <guid isPermaLink="false">https://www.bddk.org.tr/KurumHakkinda/Detay/19</guid>
-      <pubDate>Wed, 25 Mar 2026 06:52:17 +0000</pubDate>
+      <title>16.05.2019BDDK Başkanı Mehmet Ali Akben TSPB’nin 19. Olağan Genel Kurul Toplantısı’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2189</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2189</guid>
+      <pubDate>Thu, 16 May 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>17.05.2019Bankacılık Düzenleme ve Denetleme Kurulu Başkanı Mehmet Ali Akben yemin etti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2190</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2190</guid>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>17.05.2019BDDK Başkanı Mehmet Ali Akben TKBB 18.Olağan Genel Kurul Toplantısı’nda konuşma yaptı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2191</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2191</guid>
+      <pubDate>Fri, 17 May 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>08.07.2019BDDK Başkanı Mehmet Ali Akben FKB 7. Olağan Genel Kurulu’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2192</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2192</guid>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>11.10.2019BDDK Başkanı Mehmet Ali Akben IADI 2019 Yıllık Konferansı’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2193</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2193</guid>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>01.11.2019BDDK Başkanı Mehmet Ali Akben 6.Sürdürülebilir Finans Forumu’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2194</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2194</guid>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>06.11.2019Finansal Sektör Komisyonu Olağan Toplantısı TCMB Ev Sahipliğinde Gerçekleştirildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2195</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2195</guid>
+      <pubDate>Wed, 06 Nov 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>08.11.2019BDDK Başkanı Mehmet Ali Akben TSPB 2019 Kongresi Gala Yemeği’nde konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2196</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2196</guid>
+      <pubDate>Fri, 08 Nov 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>29.11.2019BDDK 2020 Yılı Bütçe Teklifi TBMM Plan ve Bütçe Komisyonu'nda kabul edildi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2197</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2197</guid>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>02.12.2019BDDK Başkanı Mehmet Ali Akben Türkiye 2023 Zirvesi’ne katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2198</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2198</guid>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>10.12.2019BDDK Başkanı Mehmet Ali Akben İİT Üst Düzey Kamu ve Özel Sektör Yatırım Konferansı’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2199</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2199</guid>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>24.12.2019BDDK Başkanı Akben Türkiye İhracatcılar Meclisi’nde gerçekleştirilen toplantıya katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2200</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2200</guid>
+      <pubDate>Tue, 24 Dec 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>30.12.2019BDDK Başkanı Mehmet Ali Akben TOGG Yeniliğe Yolculuk Buluşması’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2201</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2201</guid>
+      <pubDate>Mon, 30 Dec 2019 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>13.02.2020BDDK Başkanı Mehmet Ali Akben Kahramanmaraş’ta İş Dünyasıyla Buluştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2202</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2202</guid>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>13.02.2020Bankacılık Kanunu Teklifi TBMM Plan ve Bütçe Komisyonu’nda kabul edildi.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2203</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2203</guid>
+      <pubDate>Thu, 13 Feb 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>25.02.2020Bankacılık Kanunu Resmi Gazete’de yayımlanarak yürürlüğe girdi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2204</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2204</guid>
+      <pubDate>Tue, 25 Feb 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>27.02.2020BDDK Başkanı Mehmet Ali Akben İktisadi Araştırmalar Vakfı Konferansı’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2205</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2205</guid>
+      <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>16.06.2020BDDK Başkanı Mehmet Ali Akben 12. Uluslararası İslam Ekonomisi ve Finansı Konferansı’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2206</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2206</guid>
+      <pubDate>Tue, 16 Jun 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>24.06.2020BDDK Başkanı Mehmet Ali Akben TBB 63. Genel Kurulu’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2207</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2207</guid>
+      <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>15.07.202015 Temmuz Demokrasi ve Milli Birlik Günü</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2208</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2208</guid>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>14.09.2020BDDK Başkanı Akben'den 20. Yıl Dönümü Mesajı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2209</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2209</guid>
+      <pubDate>Mon, 14 Sep 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>11.02.2021BDDK Başkanı Akben Dış Ekonomik İlişkiler Kurulu (DEİK) Toplantısına Katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2210</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2210</guid>
+      <pubDate>Thu, 11 Feb 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>23.02.2021BDDK Başkanı Akben Sürdürülebilir Finans Forumu’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2211</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2211</guid>
+      <pubDate>Tue, 23 Feb 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>16.03.2021BDDK Başkanı Akben Ekonomi Reformları Tanıtım Toplantısı’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2212</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2212</guid>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>31.05.2021BDDK Başkanı Akben TBB 64. Genel Kurulu’nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2213</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2213</guid>
+      <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>28.06.2021BDDK Başkanı Akben FKB’nin 9.Olağan Genel Kurulu'nda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2214</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2214</guid>
+      <pubDate>Mon, 28 Jun 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>13.07.202115 Temmuz Demokrasi ve Millî Birlik Günü</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2215</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2215</guid>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>01.09.2021BDDK Başkanı Mehmet Ali Akben’den 21. Yıl Dönümü Mesajı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2216</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2216</guid>
+      <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>28.09.2021BDDK Başkanı Akben Finansın Geleceği Zirvesi'nde konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2217</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2217</guid>
+      <pubDate>Tue, 28 Sep 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>28.10.2021Başkan Mehmet Ali AKBEN’in Anadolu Ajansı Röportajı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2218</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2218</guid>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>29.10.202129 Ekim Cumhuriyet Bayramı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2219</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2219</guid>
+      <pubDate>Fri, 29 Oct 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>05.11.2021BDDK Başkanı Akben Türkiye 2023 Zirvesi'ne katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2220</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2220</guid>
+      <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>18.11.2021BDDK İkinci Başkanı Asarkaya TSPB Kongresi'nde konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2221</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2221</guid>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>29.11.2021Irak Merkez Bankası Ziyareti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2222</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2222</guid>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>15.12.2021Somali Merkez Bankası Ziyareti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2223</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2223</guid>
+      <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>04.02.2022BDDK Başkanı Mehmet Ali Akben A Para Ekonomi Masası programına konuk oldu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2224</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2224</guid>
+      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>13.05.2022BDDK Başkanı Akben FKB 10.Olağan Genel Kurulunda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2225</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2225</guid>
+      <pubDate>Fri, 13 May 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>17.05.2022BDDK Başkanı Mehmet Ali Akben TKBB 21. Olağan Genel Kurulunda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2226</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2226</guid>
+      <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>25.05.2022Kosova Merkez Bankası Ziyareti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2227</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2227</guid>
+      <pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>30.05.2022BDDK Başkanı Akben TBB 65. Olağan Genel Kurulunda konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2228</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2228</guid>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>01.09.2022Beşiktaş Spor Kulübü Asbaşkanı Kocadağ BDDK Başkanı Akben'i ziyaret etti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2229</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2229</guid>
+      <pubDate>Thu, 01 Sep 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>13.09.2022Kahramanmaraş Türkoğlu Belediye Başkanı Okumuş BDDK Başkanı Akben'i ziyaret etti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2230</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2230</guid>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>16.09.2022BDDK Başkanı Akben KGK Başkanı Özçelik'i makamında ağırladı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2231</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2231</guid>
+      <pubDate>Fri, 16 Sep 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>04.10.2022BDDK Başkanı Akben İTHİB Başkanı Ahmet ÖKSÜZ ve beraberindeki heyeti kabul etti</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2232</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2232</guid>
+      <pubDate>Tue, 04 Oct 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>06.10.2022BDDK Başkanı Akben Niğde Valisi Koç ve Sarıyer Kaymakamı Özer'i makamında ağırladı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2233</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2233</guid>
+      <pubDate>Thu, 06 Oct 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>31.10.2022BDDK Başkanı Akben 2.Finansın Geleceği Zirvesi'nde konuştu</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2234</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2234</guid>
+      <pubDate>Mon, 31 Oct 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>04.11.2022BDDK Başkanı Akben Türk Devletleri Banka Birlikleri Konseyi İmza Törenine katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2235</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2235</guid>
+      <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>14.11.2022Bankacılık Sektöründe Denetim, Uygulamalar ve Gelecek Çalıştayı düzenlendi</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2236</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2236</guid>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>17.01.2023BDDK Başkanı Akben 2022 Yılı Değerlendirmesi 2023 Yılı Hedefleri Programı’na katıldı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2238</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2238</guid>
+      <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>23.11.2022BDDK Başkanı Akben Ruanda Büyükelçisi Mironko ve beraberindeki heyeti makamında ağırladı</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2237</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2237</guid>
+      <pubDate>Wed, 23 Nov 2022 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>04.05.2023Başkan Yardımcılarımız Dr. Muhammet Erişen ve Dr. Mustafa Aydın, Hazine ve Maliye Bakanlığı tarafından düzenlenen "Finans Sektörü Odaklı Siber Tatbikat" etkinliğine katıldı.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2240</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2240</guid>
+      <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>30.07.2025Türkiye-Kazakistan Yüksek Düzeyli Stratejik İşbirliği Konseyi toplantısında, Kurumumuz ile Kazakistan Cumhuriyeti Finansal Piyasaları Düzenleme ve Geliştirme Kurumu arasında 29.07.2025 tarihinde mutabakat zaptı imzalanmıştır.</title>
+      <link>https://www.bddk.org.tr/Duyuru/Detay/2242</link>
+      <guid isPermaLink="false">https://www.bddk.org.tr/Duyuru/Detay/2242</guid>
+      <pubDate>Wed, 30 Jul 2025 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
