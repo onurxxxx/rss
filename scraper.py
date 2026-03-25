@@ -1,7 +1,7 @@
 """
 Çok Kaynaklı RSS Üretici
 Kullanım: python scraper.py
-Çıktı: feeds/ klasöründe her site için ayrı .xml dosyası
+Çıktı: feeds/ klasöründe her site için ayrı .xml dosyası 
 """
 
 import requests
