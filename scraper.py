@@ -82,64 +82,6 @@ def save_feed(fg, filename):
 
 # ── Scraper fonksiyonları ─────────────────────────────────────────────────────
 
-def scrape_bddk_liste(list_id, feed_title, filename):
-    """BDDK /Duyuru/Liste/* ve /Mevzuat/Liste/* sayfaları için genel scraper."""
-    base = "https://www.bddk.org.tr"
-    url  = f"{base}/{'Duyuru' if int(list_id) < 50 else 'Mevzuat'}/Liste/{list_id}"
-    # Hem Duyuru hem Mevzuat için doğru path'i belirle
-    if list_id in [39, 40, 48, 41, 42, 43, 197]:
-        url = f"{base}/Duyuru/Liste/{list_id}"
-    else:
-        url = f"{base}/Mevzuat/Liste/{list_id}"
-
-    soup = get_page(url)
-    if not soup:
-        return
-
-    fg = make_feed(feed_title, url, f"BDDK – {feed_title}")
-    count = 0
-    for li in soup.select("ul li"):
-        a = li.find("a", href=re.compile(r"/(Duyuru|Mevzuat)/"))
-        if not a:
-            continue
-        href = a.get("href", "")
-        if not href:
-            continue
-        full_url = base + href if href.startswith("/") else href
-        title    = a.get_text(strip=True)
-        raw      = li.get_text(" ", strip=True)
-        m        = re.search(r"\d{2}\.\d{2}\.\d{4}", raw)
-        date     = parse_date(m.group() if m else None)
-        add_entry(fg, title, full_url, date)
-        count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, filename)
-
-
-def scrape_bddk_dergi():
-    """BDDK Bankacılık ve Finansal Piyasalar Dergisi."""
-    url  = "https://www.bddk.org.tr/KurumHakkinda/Detay/26"
-    base = "https://www.bddk.org.tr"
-    soup = get_page(url)
-    if not soup:
-        return
-
-    fg = make_feed("BDDK – Bankacılık ve Finansal Piyasalar Dergisi", url,
-                   "BDDK Dergisi yeni sayıları")
-    count = 0
-    for a in soup.find_all("a", href=True):
-        href  = a["href"]
-        title = a.get_text(strip=True)
-        if not title or len(title) < 5:
-            continue
-        if "dergi" in href.lower() or "dergi" in title.lower() or re.search(r"\d{4}", title):
-            full_url = base + href if href.startswith("/") else href
-            add_entry(fg, title, full_url, datetime.now(timezone.utc))
-            count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, "bddk_dergi.xml")
 
 
 def scrape_kvkk():
@@ -196,32 +138,6 @@ def scrape_rekabet():
     print(f"  📌 {count} öğe bulundu.")
     save_feed(fg, "rekabet_guncel.xml")
 
-
-def scrape_bddk1():
-    """BDDK 1."""
-    url  = "https://www.bddk.org.tr/Mevzuat/Liste/56"
-    base = "https://www.bddk.org.tr"
-    soup = get_page(url)
-    if not soup:
-        return
-
-    fg = make_feed("BDDK1", url, "BDDK1")
-    count = 0
-    for a in soup.select("a[href*='/DokumanGetir/']"):
-        title = a.get_text(strip=True)
-        if not title or len(title) < 5:
-            continue
-        href     = a["href"]
-        full_url = base + href if href.startswith("/") else href
-        parent   = a.find_parent()
-        raw      = parent.get_text(" ", strip=True) if parent else ""
-        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date     = parse_date(m.group() if m else None)
-        add_entry(fg, title, full_url, date)
-        count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, "bddk1.xml")
 
 def scrape_isbank(path, feed_title, filename):
     """İş Bankası haber/duyuru sayfaları."""
@@ -419,17 +335,175 @@ def scrape_tcmb():
     save_feed(fg, "tcmb_basin.xml")
 
 
+
+def scrape_bddk1():
+"""BDDK 1."""
+url = "https://www.bddk.org.tr/Mevzuat/Liste/56"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK1", url, "BDDK1")
+count = 0
+for a in soup.select("a[href*='/DokumanGetir/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk1.xml")
+
+def scrape_bddk2():
+"""BDDK 2."""
+url = "https://www.bddk.org.tr/Mevzuat/Liste/55"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK2", url, "BDDK2")
+count = 0
+for a in soup.select("a[href*='/DokumanGetir/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk2.xml")
+
+
+def scrape_bddk3():
+"""BDDK 3."""
+url = "https://www.bddk.org.tr/Duyuru/Liste/39"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK3", url, "BDDK3")
+count = 0
+for a in soup.select("a[href*='/Detay/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk3.xml")
+
+
+
+
+def scrape_bddk4():
+"""BDDK 4."""
+url = "https://www.bddk.org.tr/Mevzuat/Liste/40"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK4", url, "BDDK4")
+count = 0
+for a in soup.select("a[href*='/Detay/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk4.xml")
+
+
+def scrape_bddk5():
+"""BDDK 5."""
+url = "https://www.bddk.org.tr/Mevzuat/Liste/48"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK5", url, "BDDK5")
+count = 0
+for a in soup.select("a[href*='/Detay/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk5.xml")
+
+
+def scrape_bddk6():
+"""BDDK 6."""
+url = "https://www.bddk.org.tr/Mevzuat/Liste/197"
+base = "https://www.bddk.org.tr"
+soup = get_page(url)
+if not soup:
+return
+
+fg = make_feed("BDDK6", url, "BDDK6")
+count = 0
+for a in soup.select("a[href*='/Detay/']"):
+title = a.get_text(strip=True)
+if not title or len(title) < 5:
+continue
+href = a["href"]
+full_url = base + href if href.startswith("/") else href
+parent = a.find_parent()
+raw = parent.get_text(" ", strip=True) if parent else ""
+m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+date = parse_date(m.group() if m else None)
+add_entry(fg, title, full_url, date)
+count += 1
+
+print(f" 📌 {count} öğe bulundu.")
+save_feed(fg, "bddk6.xml")
+
+
 # ── Ana akış ─────────────────────────────────────────────────────────────────
 
 TASKS = [
-    ("BDDK – Basın Duyuruları",                  lambda: scrape_bddk_liste(39,  "Basın Duyuruları",                   "bddk_basin.xml")),
-    ("BDDK – Mevzuat Duyuruları",                lambda: scrape_bddk_liste(40,  "Mevzuat Duyuruları",                 "bddk_mevzuat.xml")),
-    ("BDDK – Resmi Gazete Kurul Kararları",       lambda: scrape_bddk_liste(55,  "Resmi Gazete Kurul Kararları",       "bddk_rg_kurul.xml")),
-    ("BDDK – Resmi Gazete Dışı Kurul Kararları",  lambda: scrape_bddk_liste(56,  "Resmi Gazete Dışı Kurul Kararları",  "bddk_rg_disi.xml")),
-    ("BDDK – Dergi",                             scrape_bddk_dergi),
     ("KVKK – Duyurular",                         scrape_kvkk),
     ("Rekabet Kurumu – Güncel",                  scrape_rekabet),
-("bddk1",                  scrape_bddk1),
     ("İş Bankası – Haberler",                    lambda: scrape_isbank("/bankamizi-taniyin/is-bankasindan-haberler",   "Haberler",             "isbank_haberler.xml")),
     ("İş Bankası – Özel Durum Açıklamaları",     lambda: scrape_isbank("/bankamizi-taniyin/ozel-durum-aciklamalari", "Özel Durum Açıklamaları", "isbank_ozel_durum.xml")),
     ("KGK – Duyurular",                          scrape_kgk_duyurular),
@@ -440,6 +514,13 @@ TASKS = [
     ("TBB – Bankacılar Dergisi",                 lambda: scrape_tbb("/bankacilik/arastirma-ve-yayinlar/bankacilar-dergisi", "Bankacılar Dergisi", "tbb_dergi.xml")),
     ("TBB – Kitaplar",                           lambda: scrape_tbb("/bankacilik/arastirma-ve-yayinlar/kitaplar",           "Kitaplar",           "tbb_kitaplar.xml")),
     ("TBB – Duyurular",                          lambda: scrape_tbb("/duyurular",                                           "Duyurular",          "tbb_duyurular.xml")),
+        ("BDDK1",                  scrape_bddk1),
+        ("BDDK2",                  scrape_bddk2),
+        ("BDDK3",                  scrape_bddk3),
+        ("BDDK4",                  scrape_bddk4),
+        ("BDDK5",                  scrape_bddk5),
+        ("BDDK6",                  scrape_bddk6),
+
 ]
 
 
@@ -461,3 +542,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
