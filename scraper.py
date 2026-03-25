@@ -429,6 +429,7 @@ TASKS = [
     ("BDDK – Dergi",                             scrape_bddk_dergi),
     ("KVKK – Duyurular",                         scrape_kvkk),
     ("Rekabet Kurumu – Güncel",                  scrape_rekabet),
+("bddk1",                  scrape_bddk1),
     ("İş Bankası – Haberler",                    lambda: scrape_isbank("/bankamizi-taniyin/is-bankasindan-haberler",   "Haberler",             "isbank_haberler.xml")),
     ("İş Bankası – Özel Durum Açıklamaları",     lambda: scrape_isbank("/bankamizi-taniyin/ozel-durum-aciklamalari", "Özel Durum Açıklamaları", "isbank_ozel_durum.xml")),
     ("KGK – Duyurular",                          scrape_kgk_duyurular),
