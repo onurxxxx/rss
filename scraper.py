@@ -199,86 +199,6 @@ def scrape_tbb(path, feed_title, filename):
     save_feed(fg, filename)
 
 
-def scrape_kgk_duyurular():
-    """KGK Duyurular — JS gerektiriyorsa uyarı verir."""
-    url  = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
-    base = "https://www.kgk.gov.tr"
-    soup = get_page(url)
-    if not soup:
-        print("  ⚠️  KGK erişilemedi.")
-        return
-
-    fg = make_feed("KGK – Duyurular", url, "Kamu Gözetimi Kurumu Duyuruları")
-    count = 0
-    for a in soup.select("a[href]"):
-        title = a.get_text(strip=True)
-        href  = a["href"]
-        if not title or len(title) < 10:
-            continue
-        if "/Assignment" not in href and "/DynamicContent" not in href:
-            continue
-        full_url = base + href if href.startswith("/") else href
-        parent   = a.find_parent()
-        raw      = parent.get_text(" ", strip=True) if parent else ""
-        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date     = parse_date(m.group() if m else None)
-        add_entry(fg, title, full_url, date)
-        count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, "kgk_duyurular.xml")
-
-
-def scrape_kgk_yayinlar():
-    """KGK Son Yayımlanlar."""
-    url  = "https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar"
-    base = "https://www.kgk.gov.tr"
-    soup = get_page(url)
-    if not soup:
-        print("  ⚠️  KGK Son Yayımlanlar erişilemedi.")
-        return
-
-    fg = make_feed("KGK – Son Yayımlanlar", url, "Kamu Gözetimi Kurumu Son Yayımlananlar")
-    count = 0
-    for a in soup.select("a[href]"):
-        title = a.get_text(strip=True)
-        href  = a["href"]
-        if not title or len(title) < 10:
-            continue
-        full_url = base + href if href.startswith("/") else href
-        parent   = a.find_parent()
-        raw      = parent.get_text(" ", strip=True) if parent else ""
-        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date     = parse_date(m.group() if m else None)
-        add_entry(fg, title, full_url, date)
-        count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, "kgk_son_yayinlar.xml")
-
-
-def scrape_kgk_tezler():
-    """KGK Uzmanlık Tezleri."""
-    url  = "https://kgk.gov.tr/DynamicContentDetail/10263/Uzmanl%C4%B1k-Tezleri"
-    base = "https://kgk.gov.tr"
-    soup = get_page(url)
-    if not soup:
-        print("  ⚠️  KGK Uzmanlık Tezleri erişilemedi.")
-        return
-
-    fg = make_feed("KGK – Uzmanlık Tezleri", url, "KGK Uzmanlık Tezleri")
-    count = 0
-    for a in soup.select("a[href]"):
-        title = a.get_text(strip=True)
-        href  = a["href"]
-        if not title or len(title) < 10:
-            continue
-        full_url = base + href if href.startswith("/") else href
-        add_entry(fg, title, full_url, datetime.now(timezone.utc))
-        count += 1
-
-    print(f"  📌 {count} öğe bulundu.")
-    save_feed(fg, "kgk_tezler.xml")
 
 
 def scrape_dkbp():
@@ -534,9 +454,7 @@ TASKS = [
     ("Rekabet Kurumu – Güncel",                  scrape_rekabet),
     ("İş Bankası – Haberler",                    lambda: scrape_isbank("/bankamizi-taniyin/is-bankasindan-haberler",   "Haberler",             "isbank_haberler.xml")),
     ("İş Bankası – Özel Durum Açıklamaları",     lambda: scrape_isbank("/bankamizi-taniyin/ozel-durum-aciklamalari", "Özel Durum Açıklamaları", "isbank_ozel_durum.xml")),
-    ("KGK – Duyurular",                          scrape_kgk_duyurular),
-    ("KGK – Son Yayımlanlar",                    scrape_kgk_yayinlar),
-    ("KGK – Uzmanlık Tezleri",                   scrape_kgk_tezler),
+    
     ("DKBP – İdari Yaptırım",                    scrape_dkbp),
     ("TCMB – Basın Duyuruları",                  scrape_tcmb),
     ("TBB – Bankacılar Dergisi",                 lambda: scrape_tbb("/bankacilik/arastirma-ve-yayinlar/bankacilar-dergisi", "Bankacılar Dergisi", "tbb_dergi.xml")),
