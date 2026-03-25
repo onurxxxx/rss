@@ -422,7 +422,7 @@ def scrape_bddk6():
 
 def scrape_kgk1():
     """KGK 1."""
-    url = "https://www.kgk.gov.tr/Assignments"
+    url = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
     base = "https://www.kgk.gov.tr"
     soup = get_page(url)
     if not soup:
@@ -447,6 +447,86 @@ def scrape_kgk1():
         save_feed(fg, "kgk1.xml")
 
 
+def scrape_kgk2():
+    """KGK 2."""
+    url = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("KGK2", url, "KGK2")
+    count = 0
+    for a in soup.select("a[href*='/Portalv2Uploads/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "kgk2.xml")
+
+
+def scrape_kgk3():
+    """KGK 3."""
+    url = "https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("KGK3", url, "KGK3")
+    count = 0
+    for a in soup.select("a[href*='/ContentAssignmentDetail/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "kgk3.xml")
+
+def scrape_kgk4():
+    """KGK 4."""
+    url = "https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("KGK4", url, "KGK4")
+    count = 0
+    for a in soup.select("a[href*='/Portalv2Uploads/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "kgk4.xml")
+
+
 # ── Ana akış ─────────────────────────────────────────────────────────────────
 
 TASKS = [
@@ -467,7 +547,9 @@ TASKS = [
         ("BDDK5",                  scrape_bddk5),
         ("BDDK6",                  scrape_bddk6),
 ("KGK1",                  scrape_kgk1),
-
+("KGK2",                  scrape_kgk2),
+("KGK3",                  scrape_kgk3),
+("KGK4",                  scrape_kgk4),
 ]
 
 
