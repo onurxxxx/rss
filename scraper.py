@@ -15,20 +15,16 @@ OUTPUT_DIR = "feeds"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "User-Agent": "Mozilla/5.0",
     "Accept-Language": "tr-TR,tr;q=0.9",
 }
-
-# ─────────────────────────────────────────────────────────────
-# GLOBAL STORAGE
-# ─────────────────────────────────────────────────────────────
 
 ALL_ITEMS = []
 SEEN = set()
 
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------
 # YARDIMCI
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------
 
 def get_page(url, timeout=20):
     try:
@@ -36,7 +32,7 @@ def get_page(url, timeout=20):
         r.encoding = "utf-8"
         return BeautifulSoup(r.text, "html.parser")
     except Exception as e:
-        print(f"  ⚠️  Sayfa çekilemedi: {url} → {e}")
+        print("Sayfa alınamadı:", url, e)
         return None
 
 
@@ -52,84 +48,54 @@ def parse_date(text):
         except:
             pass
 
-    m = re.search(r"(\d{2})[./](\d{2})[./](\d{4})", text)
-    if m:
-        try:
-            return datetime(int(m.group(3)), int(m.group(2)), int(m.group(1)), tzinfo=timezone.utc)
-        except:
-            pass
-
     return datetime.now(timezone.utc)
 
 
 def add_entry(title, url, date):
-    if not title or not url:
-        return
     if url in SEEN:
         return
     SEEN.add(url)
 
     ALL_ITEMS.append({
-        "title": title.strip(),
+        "title": title,
         "url": url,
         "date": date
     })
 
 
-def save_feed(fg, filename):
-    path = os.path.join(OUTPUT_DIR, filename)
-    fg.rss_file(path, pretty=True)
-    print(f"  ✅ Kaydedildi: {path}")
+# -------------------------------------------------
+# BDDK TABLO SCRAPER (DÜZELTİLDİ)
+# -------------------------------------------------
 
-
-# ─────────────────────────────────────────────────────────────
-# SCRAPERS
-# ─────────────────────────────────────────────────────────────
-
-def scrape_bddk1():
-    url = "https://www.bddk.org.tr/Mevzuat/Liste/56"
+def scrape_bddk_table(url, tag):
     base = "https://www.bddk.org.tr"
     soup = get_page(url)
     if not soup:
         return
 
+    rows = soup.select("table tr")
     count = 0
-    for a in soup.select("a[href*='/DokumanGetir/']"):
-        title = a.get_text(strip=True)
-        if len(title) < 5:
+
+    for row in rows:
+        cols = row.find_all("td")
+        if len(cols) < 2:
             continue
+
+        date_text = cols[0].get_text(strip=True)
+        a = cols[1].find("a")
+
+        if not a:
+            continue
+
+        title = a.get_text(strip=True)
         href = a["href"]
         full_url = base + href if href.startswith("/") else href
-        raw = a.find_parent().get_text(" ", strip=True)
-        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date = parse_date(m.group() if m else None)
+        date = parse_date(date_text)
+
         add_entry(f"[BDDK] {title}", full_url, date)
         count += 1
 
-    print(f" 📌 BDDK1: {count} öğe")
-
-
-def scrape_bddk2():
-    url = "https://www.bddk.org.tr/Mevzuat/Liste/55"
-    base = "https://www.bddk.org.tr"
-    soup = get_page(url)
-    if not soup:
-        return
-
-    count = 0
-    for a in soup.select("a[href*='/DokumanGetir/']"):
-        title = a.get_text(strip=True)
-        if len(title) < 5:
-            continue
-        href = a["href"]
-        full_url = base + href if href.startswith("/") else href
-        raw = a.find_parent().get_text(" ", strip=True)
-        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date = parse_date(m.group() if m else None)
-        add_entry(f"[BDDK] {title}", full_url, date)
-        count += 1
-
-    print(f" 📌 BDDK2: {count} öğe")
+    print(f"BDDK {tag}: {count}")
 
 
 def scrape_bddk_duyuru(url):
@@ -138,21 +104,33 @@ def scrape_bddk_duyuru(url):
     if not soup:
         return
 
+    rows = soup.select("table tr")
     count = 0
-    for a in soup.select("a[href*='/Duyuru/Detay/']"):
-        title = a.get_text(strip=True)
-        if len(title) < 5:
+
+    for row in rows:
+        cols = row.find_all("td")
+        if len(cols) < 2:
             continue
+
+        date_text = cols[0].get_text(strip=True)
+        a = cols[1].find("a")
+        if not a:
+            continue
+
+        title = a.get_text(strip=True)
         href = a["href"]
         full_url = base + href if href.startswith("/") else href
-        raw = a.find_parent().get_text(" ", strip=True)
-        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
-        date = parse_date(m.group() if m else None)
+        date = parse_date(date_text)
+
         add_entry(f"[BDDK] {title}", full_url, date)
         count += 1
 
-    print(f" 📌 BDDK Duyuru: {count} öğe")
+    print(f"BDDK Duyuru: {count}")
 
+
+# -------------------------------------------------
+# KGK
+# -------------------------------------------------
 
 def scrape_kgk(url, selector, tag):
     base = "https://www.kgk.gov.tr"
@@ -161,36 +139,39 @@ def scrape_kgk(url, selector, tag):
         return
 
     count = 0
+
     for a in soup.select(selector):
         title = a.get_text(strip=True)
         if len(title) < 5:
             continue
+
         href = a["href"]
         full_url = base + href if href.startswith("/") else href
+
         raw = a.find_parent().get_text(" ", strip=True)
         m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
         date = parse_date(m.group() if m else None)
+
         add_entry(f"[KGK] {title}", full_url, date)
         count += 1
 
-    print(f" 📌 {tag}: {count} öğe")
+    print(f"{tag}: {count}")
 
 
-# ─────────────────────────────────────────────────────────────
-# FEED BUILD
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------
+# FEED
+# -------------------------------------------------
 
 def build_feed():
     fg = FeedGenerator()
-    fg.title("Regülasyon & Bankacılık – Tüm Akış")
-    fg.link(href="https://localhost/combined", rel="alternate")
-    fg.description("Birleşik RSS Feed")
+    fg.title("Regülasyon Feed")
+    fg.link(href="https://localhost/")
+    fg.description("BDDK + KGK Tek Feed")
 
     items = sorted(ALL_ITEMS, key=lambda x: x["date"], reverse=True)
 
     cutoff = datetime.now(timezone.utc) - timedelta(days=30)
     items = [i for i in items if i["date"] >= cutoff]
-
     items = items[:300]
 
     for i in items:
@@ -201,42 +182,31 @@ def build_feed():
         fe.published(i["date"])
         fe.updated(i["date"])
 
-    save_feed(fg, "combined.xml")
+    fg.rss_file("feeds/combined.xml", pretty=True)
+    print("combined.xml oluşturuldu")
 
 
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------
 # MAIN
-# ─────────────────────────────────────────────────────────────
+# -------------------------------------------------
 
 def main():
     TASKS = [
-        ("BDDK1", scrape_bddk1),
-        ("BDDK2", scrape_bddk2),
-        ("BDDK Duyuru 39", lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/39")),
-        ("BDDK Duyuru 40", lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/40")),
-        ("BDDK Duyuru 48", lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/48")),
-        ("BDDK Duyuru 197", lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/197")),
-        ("KGK1", lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/1/0/Duyurular", "a[href*='/ContentAssignmentDetail/']", "KGK1")),
-        ("KGK2", lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/1/0/Duyurular", "a[href*='/Portalv2Uploads/']", "KGK2")),
-        ("KGK3", lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar", "a[href*='/ContentAssignmentDetail/']", "KGK3")),
-        ("KGK4", lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar", "a[href*='/Portalv2Uploads/']", "KGK4")),
-        ("KGK5", lambda: scrape_kgk("https://www.kgk.gov.tr/Activities/6748/1/Faaliyetlerimiz", "a[href*='/ActivityDetail/']", "KGK5")),
+        lambda: scrape_bddk_table("https://www.bddk.org.tr/Mevzuat/Liste/56", "Mevzuat56"),
+        lambda: scrape_bddk_table("https://www.bddk.org.tr/Mevzuat/Liste/55", "Mevzuat55"),
+        lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/39"),
+        lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/40"),
+        lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/48"),
+        lambda: scrape_bddk_duyuru("https://www.bddk.org.tr/Duyuru/Liste/197"),
+        lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/1/0/Duyurular", "a[href*='/ContentAssignmentDetail/']", "KGK1"),
+        lambda: scrape_kgk("https://www.kgk.gov.tr/Assignments/2/0/Son-Yayimlananlar", "a[href*='/ContentAssignmentDetail/']", "KGK2"),
     ]
 
-    print(f"🚀 {len(TASKS)} kaynak taranıyor...\n")
-
-    for name, fn in TASKS:
-        print(f"⏳ {name}")
-        try:
-            fn()
-        except Exception as e:
-            print(f"  ❌ Hata: {e}")
+    for task in TASKS:
+        task()
         time.sleep(1)
 
     build_feed()
-
-    print("\n✅ Tamamlandı.")
-    print("📁 Çıktı: feeds/combined.xml")
 
 
 if __name__ == "__main__":
