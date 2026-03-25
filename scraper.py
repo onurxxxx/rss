@@ -548,7 +548,7 @@ TASKS = [
         ("BDDK4",                  scrape_bddk4),
         ("BDDK5",                  scrape_bddk5),
         ("BDDK6",                  scrape_bddk6),
-("KGK1",                  scrape_kgk6),
+("KGK1",                  scrape_kgk1),
 
 ]
 
