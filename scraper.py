@@ -412,8 +412,8 @@ def scrape_bddk3():
         add_entry(fg, title, full_url, date)
         count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk3.xml")
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "bddk3.xml")
 
 
 
@@ -441,8 +441,8 @@ def scrape_bddk4():
         add_entry(fg, title, full_url, date)
         count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk4.xml")
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "bddk4.xml")
 
 
 def scrape_bddk5():
@@ -468,8 +468,8 @@ def scrape_bddk5():
         add_entry(fg, title, full_url, date)
         count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk5.xml")
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "bddk5.xml")
 
 
 def scrape_bddk6():
@@ -495,8 +495,8 @@ def scrape_bddk6():
         add_entry(fg, title, full_url, date)
         count += 1
 
-print(f" 📌 {count} öğe bulundu.")
-save_feed(fg, "bddk6.xml")
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "bddk6.xml")
 
 
 # ── Ana akış ─────────────────────────────────────────────────────────────────
