@@ -499,6 +499,34 @@ def scrape_bddk6():
         save_feed(fg, "bddk6.xml")
 
 
+
+def scrape_kgk1():
+    """KGK 1."""
+    url = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
+    base = "https://www.kgk.gov.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("KGK1", url, "KGK1")
+    count = 0
+    for a in soup.select("a[href*='/ContentAssignmentDetail/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent = a.find_parent()
+        raw = parent.get_text(" ", strip=True) if parent else ""
+        m = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+        print(f" 📌 {count} öğe bulundu.")
+        save_feed(fg, "kgk1.xml")
+
+
 # ── Ana akış ─────────────────────────────────────────────────────────────────
 
 TASKS = [
@@ -520,6 +548,7 @@ TASKS = [
         ("BDDK4",                  scrape_bddk4),
         ("BDDK5",                  scrape_bddk5),
         ("BDDK6",                  scrape_bddk6),
+("KGK1",                  scrape_kgk6),
 
 ]
 
