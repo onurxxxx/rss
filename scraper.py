@@ -197,6 +197,32 @@ def scrape_rekabet():
     save_feed(fg, "rekabet_guncel.xml")
 
 
+def scrape_bddk1():
+    """BDDK 1."""
+    url  = "https://www.bddk.org.tr/Mevzuat/Liste/56"
+    base = "https://www.bddk.org.tr"
+    soup = get_page(url)
+    if not soup:
+        return
+
+    fg = make_feed("BDDK1", url, "BDDK1")
+    count = 0
+    for a in soup.select("a[href*='/DokumanGetir/']"):
+        title = a.get_text(strip=True)
+        if not title or len(title) < 5:
+            continue
+        href     = a["href"]
+        full_url = base + href if href.startswith("/") else href
+        parent   = a.find_parent()
+        raw      = parent.get_text(" ", strip=True) if parent else ""
+        m        = re.search(r"\d{2}[./]\d{2}[./]\d{4}", raw)
+        date     = parse_date(m.group() if m else None)
+        add_entry(fg, title, full_url, date)
+        count += 1
+
+    print(f"  📌 {count} öğe bulundu.")
+    save_feed(fg, "bddk1.xml")
+
 def scrape_isbank(path, feed_title, filename):
     """İş Bankası haber/duyuru sayfaları."""
     base = "https://www.isbank.com.tr"
