@@ -502,7 +502,7 @@ def scrape_bddk6():
 
 def scrape_kgk1():
     """KGK 1."""
-    url = "https://www.kgk.gov.tr/Assignments/1/0/Duyurular"
+    url = "https://www.kgk.gov.tr/Assignments"
     base = "https://www.kgk.gov.tr"
     soup = get_page(url)
     if not soup:
