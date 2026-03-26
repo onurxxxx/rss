@@ -12,8 +12,7 @@ import re
 import os
 import time
 import urllib3
-session = requests.Session()
-session.headers.update(HEADERS)
+
 
 
 OUTPUT_DIR = "feeds"
@@ -23,7 +22,8 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept-Language": "tr-TR,tr;q=0.9",
 }
-
+session = requests.Session()
+session.headers.update(HEADERS)
 
 # ── Yardımcı fonksiyonlar ─────────────────────────────────────────────────────
 
