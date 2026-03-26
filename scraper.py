@@ -11,6 +11,10 @@ from datetime import datetime, timezone
 import re
 import os
 import time
+import urllib3
+session = requests.Session()
+session.headers.update(HEADERS)
+
 
 OUTPUT_DIR = "feeds"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -25,7 +29,7 @@ HEADERS = {
 
 def get_page(url, timeout=20):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=timeout, verify=False)
+        r = session.get(url, timeout=timeout, verify=False)
         r.encoding = "utf-8"
         return BeautifulSoup(r.text, "html.parser")
     except Exception as e:
