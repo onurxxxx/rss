@@ -25,7 +25,7 @@ HEADERS = {
 
 def get_page(url, timeout=20):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=timeout)
+        r = requests.get(url, headers=HEADERS, timeout=timeout, verify=False)
         r.encoding = "utf-8"
         return BeautifulSoup(r.text, "html.parser")
     except Exception as e:
