@@ -1,9 +1,9 @@
 name: RSS Feed Güncelle
 
 on:
-  schedule:
-    - cron: "0 * * * *"   # Her saat başı
-  workflow_dispatch:        # Elle de tetiklenebilir
+#  schedule:
+#    - cron: "0 * * * *"   # Her saat başı
+#  workflow_dispatch:        # Elle de tetiklenebilir
 
 jobs:
   update-rss:
